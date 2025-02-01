@@ -95,7 +95,7 @@ def taylor_p2(x):
 x_values = np.logspace(-1, -6, 6)  # 10^-1 à 10^-6
 errors = np.abs(f(x_values) - taylor_p2(x_values))
 
-plt.plot(x_values, errors, marker='o')
+plt.loglog(x_values, errors, marker='o')
 plt.xlabel("x")
 plt.ylabel("Erreur |f(x) - p2(x)|")
 plt.title("Erreur de l'approxlimation de Taylor en fonction de x")
