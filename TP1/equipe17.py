@@ -15,7 +15,7 @@ K = np.diag(b)
 
 L = 55 * I - J + 2 * np.dot(a, c)
 M = K.copy()
-M[:, 0] = a.flatten()
+M[:, 0] = a.reshape(6)
 
 dd = np.linalg.det(M)
 x = np.linalg.solve(M, a)
@@ -75,7 +75,7 @@ def D(x, h):
     return (f(x + h) - f(x)) / h
 
 
-h_values = np.logspace(-1, -12, 12)  # 10^-1 à 10^-12
+h_values = np.logspace(-1, -6, 6)  # 10^-1 à 10^-12
 errors = np.abs(df_exact(0) - D(0, h_values))
 
 plt.loglog(h_values, errors, marker='o')
@@ -92,7 +92,7 @@ def taylor_p2(x):
     return 1 + 2*x
 
 
-x_values = np.logspace(-1, -6, 6)  # 10^-1 à 10^-6
+x_values = np.logspace(-1, -3, 3)  # 10^-1 à 10^-6
 errors = np.abs(f(x_values) - taylor_p2(x_values))
 
 plt.loglog(x_values, errors, marker='o')
